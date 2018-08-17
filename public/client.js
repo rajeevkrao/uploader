@@ -14,6 +14,8 @@ const dreamInput = dreamsForm.elements['dream'];
 const getDreamsListener = function() {
   // parse our response to convert to JSON
   dreams = JSON.parse(this.responseText);
+  
+  console.log(dreams);
 
   // iterate through every dream and add it to our page
   dreams.forEach( function(row) {
