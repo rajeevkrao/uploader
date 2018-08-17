@@ -12,7 +12,8 @@
   "dependencies": {
     "express": "^4.16.3",
     "sqlite3": "^4.0.2",
-    "quick.db": "^6.3.2"
+    "quick.db": "^6.3.2",
+    "mysql-server-5.6-linux-i386": "^5.6.24002"
   },
   "engines": {
     "node": "8.x"
