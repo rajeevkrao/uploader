@@ -15,7 +15,7 @@ const getDreamsListener = function() {
   // parse our response to convert to JSON
   dreams = JSON.parse(this.responseText);
   
-  console.log(dreams);
+ 
 
   // iterate through every dream and add it to our page
   dreams.forEach( function(row) {
@@ -34,6 +34,7 @@ const appendNewDream = function(dream) {
   const newListItem = document.createElement('li');
   newListItem.innerHTML = dream;
   dreamsList.appendChild(newListItem);
+   console.log(dreams);
 }
 
 // listen for the form to be submitted and add a new dream when it is
