@@ -1,5 +1,6 @@
 dependencies:
   express: 4.16.3
+  mysql-server-5.6-linux-i386: 5.6.24002
   quick.db: 6.3.2
   sqlite3: 4.0.2
 packages:
@@ -407,6 +408,10 @@ packages:
       node: '>= 0.10.0'
     resolution:
       integrity: sha1-avilAjUNsyRuzEvs9rWjTSL37VM=
+  /extend/2.0.2:
+    dev: false
+    resolution:
+      integrity: sha512-AgFD4VU+lVLP6vjnlNfF7OeInLTyeyckCNPEsuxz1vi786UuK/nk6ynPuhn/h+Ju9++TQyr5EpLRI14fc1QtTQ==
   /extend/3.0.2:
     dev: false
     resolution:
@@ -771,6 +776,12 @@ packages:
     dev: false
     resolution:
       integrity: sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=
+  /mysql-server-5.6-linux-i386/5.6.24002:
+    dependencies:
+      extend: 2.0.2
+    dev: false
+    resolution:
+      integrity: sha1-w02pBPsadAA5LqPE0uYLtQvvaPQ=
   /nan/2.10.0:
     dev: false
     resolution:
@@ -1353,5 +1364,6 @@ shrinkwrapMinorVersion: 8
 shrinkwrapVersion: 3
 specifiers:
   express: ^4.16.3
+  mysql-server-5.6-linux-i386: ^5.6.24002
   quick.db: ^6.3.2
   sqlite3: ^4.0.2
