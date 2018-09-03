@@ -777,9 +777,13 @@ packages:
     resolution:
       integrity: sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=
   /mysql-server-5.6-linux-i386/5.6.24002:
+    cpu:
+      - ia32
     dependencies:
       extend: 2.0.2
     dev: false
+    os:
+      - linux
     resolution:
       integrity: sha1-w02pBPsadAA5LqPE0uYLtQvvaPQ=
   /nan/2.10.0:
@@ -1360,7 +1364,7 @@ packages:
     resolution:
       integrity: sha1-AI4G2AlDIMNy28L47XagymyKxBk=
 registry: 'https://registry.npmjs.org/'
-shrinkwrapMinorVersion: 8
+shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
   express: ^4.16.3
