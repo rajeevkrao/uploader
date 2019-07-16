@@ -15,11 +15,7 @@ const componentsMade = [
   'UnorderedList - which takes an array of "items" and returns a <ul> element with <li>, elements of each of those items within it',
 ];
 
-/* the main page for the index route of this app */
-const HelloWorld = function() {
-  return (
-    <div>
-      <h1>Hello World!</h1>
+var tar=<div>
 
       <p>This is a starter <a href="http://glitch.com">Glitch</a> app for React! It uses 
         only a few dependencies to get you started on working with React:</p>
@@ -30,6 +26,10 @@ const HelloWorld = function() {
 
       <UnorderedList items={componentsMade} />
     </div>
+
+/* the main page for the index route of this app */
+const HelloWorld = function() {
+  return (tar
   );
 }
 
