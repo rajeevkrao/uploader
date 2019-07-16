@@ -15,6 +15,19 @@ const componentsMade = [
   'UnorderedList - which takes an array of "items" and returns a <ul> element with <li>, elements of each of those items within it',
 ];
 
+
+
+var data;
+
+data=<div>
+    
+  
+  
+  
+  
+  
+  </div>
+
 var tar=<div>
 
       <p>This is a starter <a href="http://glitch.com">Glitch</a> app for React! It uses 
