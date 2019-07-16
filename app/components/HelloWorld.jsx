@@ -1,6 +1,10 @@
 const React = require('react');
 const UnorderedList = require('./UnorderedList');
 
+const list= require('../../list.json')
+
+
+
 const dependenciesArray = [
   'express - middleware for the node server',
   'react - for generating the views of the app',
@@ -22,7 +26,9 @@ var data;
 data=<div>
     
   
-  
+  <p>
+    {list.rajeev}
+  </p>
   
   
   
@@ -42,7 +48,7 @@ var tar=<div>
 
 /* the main page for the index route of this app */
 const HelloWorld = function() {
-  return (tar
+  return (data
   );
 }
 
