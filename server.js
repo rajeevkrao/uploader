@@ -18,7 +18,7 @@ app.get("/upload", function(request, response) {
 });
 
 app.get('/', function (req, res){
-    res.sendFile(__dirname + '/index.html');
+    res.sendFile(__dirname + '/app/upload.html');
 });
 
 app.post('/', function (req, res){
@@ -34,7 +34,7 @@ app.post('/', function (req, res){
         console.log('Uploaded ' + file.name);
     });
 
-    res.sendFile(__dirname + '/index.html');
+    res.sendFile(__dirname + 'app/index.html');
 });
 
 // listen for requests :)
