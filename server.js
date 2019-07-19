@@ -13,15 +13,11 @@ app.get("/", function(request, response) {
   response.sendFile(__dirname + '/app/index.html');
 });
 
-app.get("/upload", function(request, response) {
-  response.sendFile(__dirname + '/app/index.html');
-});
-
-app.get('/', function (req, res){
+app.get('/uploads', function (req, res){
     res.sendFile(__dirname + '/app/upload.html');
 });
 
-app.post('/', function (req, res){
+app.post('/uploads', function (req, res){
     var form = new formidable.IncomingForm();
 
     form.parse(req);
@@ -34,7 +30,7 @@ app.post('/', function (req, res){
         console.log('Uploaded ' + file.name);
     });
 
-    res.sendFile(__dirname + 'app/index.html');
+    res.sendFile(__dirname + '/index.html');
 });
 
 // listen for requests :)
