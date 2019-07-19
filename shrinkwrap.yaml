@@ -1,5 +1,6 @@
 dependencies:
   express: 4.17.1
+  formidable: 1.2.1
   jsx-loader: 0.13.2
   react: 16.8.6
   react-dom: 16.8.6
@@ -1156,6 +1157,10 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-gQaNKVqBQuwKxybG4iAMMPttXoA=
+  /formidable/1.2.1:
+    dev: false
+    resolution:
+      integrity: sha512-Fs9VRguL0gqGHkXS5GQiMCr1VhZBxz0JnJs4JmMp/2jL18Fmbzvv7vOFRU+U8TBkHEE/CX1qDXzJplVULgsLeg==
   /forwarded/0.1.2:
     dev: false
     engines:
@@ -3218,6 +3223,7 @@ shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
   express: ^4.16.4
+  formidable: ^1.2.1
   jsx-loader: ^0.13.2
   react: ^16.8.6
   react-dom: ^16.8.6

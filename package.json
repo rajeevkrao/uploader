@@ -16,7 +16,8 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "webpack": "^4.35.0",
-    "webpack-cli": "^3.3.5"
+    "webpack-cli": "^3.3.5",
+    "formidable": "^1.2.1"
   },
   "engines": {
     "node": "8.x"
