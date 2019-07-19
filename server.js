@@ -25,10 +25,10 @@ app.post('/uploads', function (req, res){
   
     form.parse(req, function(error, fields, files) {
     console.log("parsing done");
-    
+    });
 
     form.on('fileBegin', function (name, file){
-        file.path = __dirname + '/uploads/' + file.name;
+        file.path = __dirname + '/app/uploads/' + file.name;
         console.log("reaching");
     });
 
@@ -37,7 +37,6 @@ app.post('/uploads', function (req, res){
     });
 
     res.sendFile(__dirname + '/app/index.html');
-    });
 });
   
   
