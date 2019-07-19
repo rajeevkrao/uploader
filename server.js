@@ -21,7 +21,7 @@ app.get('/uploads', function (req, res){
 app.post('/uploads', function (req, res){
     var form = new formidable.IncomingForm();
 
-    form.parse(req);
+    //form.parse(req);
   
     form.parse(req, function(error, fields, files) {
     console.log("parsing done");
@@ -29,13 +29,14 @@ app.post('/uploads', function (req, res){
 
     form.on('fileBegin', function (name, file){
         file.path = __dirname + '/uploads/' + file.name;
+        console.log("reaching");
     });
 
     form.on('file', function (name, file){
         console.log('Uploaded ' + file.name);
     });
 
-    res.sendFile(__dirname + '/index.html');
+    res.sendFile(__dirname + '/app/index.html');
     });
 });
   
