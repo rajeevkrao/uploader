@@ -26,20 +26,7 @@ app.post('/uploads', function (req, res){
     form.parse(req, function(error, fields, files) {
     console.log("parsing done");
     
-    /* Possible error on Windows systems:
-       tried to rename to an already existing file */
-    fs.rename(files.upload.path, "/uploads/test.png", function(error) {
-      if (error) {
-        fs.unlink("/uploads/test.png");
-        fs.rename(files.upload.path, "/uploads/test.png");
-      }
-    });
-    res.writeHead(200, {"Content-Type": "text/html"});
-    res.write("received image:<br/>");
-    res.write("<img src='/show' />");
-    res.end();
-  });
-/*
+
     form.on('fileBegin', function (name, file){
         file.path = __dirname + '/uploads/' + file.name;
     });
@@ -49,8 +36,10 @@ app.post('/uploads', function (req, res){
     });
 
     res.sendFile(__dirname + '/index.html');
-  */
+    });
 });
+  
+  
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
