@@ -1,5 +1,9 @@
-import { fs } from 'fs';
-import { path } from 'path';
+//import { fs } from "fs";
+//import { path } from "path";
+
+var fs = require('../../node_modules/fs');
+var path = require('path');
+
 
 const folder = path.join(__dirname, '../uploads/');
 
