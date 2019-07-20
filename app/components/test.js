@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+import { fs } from 'fs';
+import { path } from 'path';
 
 const folder = path.join(__dirname, '../uploads/');
 
