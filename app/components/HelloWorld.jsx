@@ -1,8 +1,6 @@
 const React = require('react');
 const UnorderedList = require('./UnorderedList');
 
-import * as fs from 'fs';
-
 const list= require('../../list.json')
 
 const folder="../uploads/";
