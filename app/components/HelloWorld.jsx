@@ -3,7 +3,7 @@ const UnorderedList = require('./UnorderedList');
 
 const list= require('../../list.json');
 
-//const transfer=require('./test.js');
+const transfer=require('./test.js');
 
 
 
