@@ -18,15 +18,13 @@ app.get("/", function(request, response) {
 });
 
 app.get('/getlist', function (req, res){
-      var result;
+  
   fs.readdir(folder, (err, files) => {
-  result=files;
+    console.log(files);
   /*files.forEach(file => {
     console.log(file);
   });*/
 });
-  
-return result;
 });
 
 app.get('/uploads', function (req, res){

@@ -3,20 +3,17 @@ const UnorderedList = require('./UnorderedList');
 
 const axios = require('axios');
 
-const list= require('../../list.json');
+//const list= require('../../list.json');
 
 //const transfer=require('./test.js');
 
-
-axios.get('https://ramer.glitch.me/getlist')
-    .then(response => console.log(response))
-
+var list=axios.get('https://ramer.glitch.me/getlist');
 
 var data;
 
 data=<div>  
   <p>
-    {list.rajeev}
+    {list}
   </p>
   </div>
 
