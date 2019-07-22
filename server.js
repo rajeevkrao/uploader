@@ -14,6 +14,10 @@ app.get("/", function(request, response) {
   response.sendFile(__dirname + '/app/index.html');
 });
 
+app.get('/getlist', function (req, res){
+    
+});
+
 app.get('/uploads', function (req, res){
     res.sendFile(__dirname + '/app/upload.html');
 });

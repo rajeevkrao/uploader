@@ -1,10 +1,15 @@
 const React = require('react');
 const UnorderedList = require('./UnorderedList');
 
+const axios = require('axios');
+
 const list= require('../../list.json');
 
-const transfer=require('./test.js');
+//const transfer=require('./test.js');
 
+
+axios.get('https://ramer.glitch.me/getlist')
+    .then(response => console.log(response))
 
 
 var data;
