@@ -23,10 +23,10 @@ app.get('/getlist', function (req, res){
   var files = fs.readdir(folder, (err, files) => {
     var result = JSON.stringify(files);
     res.send(result);
-
+/*
   files.forEach(file => {
     console.log(file);
-  });
+  });*/
   });
 
 });
