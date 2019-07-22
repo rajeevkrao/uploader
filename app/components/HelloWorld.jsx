@@ -12,22 +12,6 @@ const http = require('http');
 
 var dat;
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      data: null,
-    };
-  }
-
-  componentDidMount() {
-    fetch('https://ramer.glitch.me/getlist')
-      .then(response => response.json())
-      .then(data => this.setState({ data }));
-  }
-}
-
 http.get('https://ramer.glitch.me/getlist', function(res) {
   res.setEncoding('utf8');
   res.on('data', function (chunk) {
