@@ -4,7 +4,10 @@
 var express = require('express');
 var app = express();
 var formidable = require('formidable');
-var fs = require("fs");
+var fs = require('fs');
+var path = require('path');
+
+const folder = path.join(__dirname, '../uploads/');
 
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
@@ -15,7 +18,15 @@ app.get("/", function(request, response) {
 });
 
 app.get('/getlist', function (req, res){
-    
+      var result;
+  fs.readdir(folder, (err, files) => {
+  result=files;
+  /*files.forEach(file => {
+    console.log(file);
+  });*/
+});
+  
+return result;
 });
 
 app.get('/uploads', function (req, res){
