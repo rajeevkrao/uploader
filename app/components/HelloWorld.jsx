@@ -3,22 +3,35 @@ const UnorderedList = require('./UnorderedList');
 
 const axios = require('axios');
 
+const http = require('http');
+
 //const list= require('../../list.json');
 
 //const transfer=require('./test.js');
 
-var list=axios.get('https://ramer.glitch.me/getlist');
+var dat
 
-var data;
+http.get('https://ramer.glitch.me/getlist', function(res) {
+  res.setEncoding('utf8');
+  res.on('data', function (chunk) {
+    dat=chunk;
+  });
+}
+        
+        
+);
 
-data=<div>  
+
+
+var data=<div>  
   <p>
-    {list}
+    {}
   </p>
   </div>
 
 /* the main page for the index route of this app */
 const HelloWorld = function() {
+  console.log("aa:"+dat);
   return (data
   );
 }
