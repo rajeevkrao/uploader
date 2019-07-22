@@ -21,6 +21,9 @@ app.get('/getlist', function (req, res){
   const folder = path.join(__dirname, '/app/uploads/');
   
   var files = fs.readdir(folder, (err, files) => {
+    var result = JSON.stringify(files);
+    res.send(result);
+
   files.forEach(file => {
     console.log(file);
   });
