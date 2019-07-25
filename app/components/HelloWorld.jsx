@@ -2,8 +2,57 @@ const  React = require('react');
 const { Component } = require('react');
 const UnorderedList = require('./UnorderedList');
 
+class App extends Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      items: [],
+      isLoaded: false,
+    }
+  }
+  
+  componentDidMount() {
+    
+    fetch('https://carrybot.glitch.me/getlist')
+      .then(res => res.json())
+      .then(json => {
+      
+        this.setState({
+          isLoaded: true,
+          item: json,
+        })
+      
+    });
+    
+  }
+  
+  render(){
+    
+    var { isLoaded, items } = this.state;
+    
+    if(!isLoaded) {
+       return <div>Loading...</div>
+    }
+    
+    else{
+      return(
+        <div className="App">Data jas been loaded...</div>
+      )
+    }
+    
+    return (
+        <div className="App">
+      
+      </div>
+    );
+  }
+}
+
+export default App;
 
 
+/*
 const axios = require('axios');
 
 const http = require('http');
@@ -33,18 +82,18 @@ var b=http.get('https://ramer.glitch.me/getlist', (res) => {
 });
 
 
-
 var data=<div>  
   <p>
-    {b}
+    
   </p>
   </div>
 
-/* the main page for the index route of this app */
 const HelloWorld = function() {
-  console.log("aa:"+car);
   return (data
   );
 }
 
 module.exports = HelloWorld;
+*/
+
+
