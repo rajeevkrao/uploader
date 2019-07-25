@@ -2,6 +2,8 @@ const  React = require('react');
 const { Component } = require('react');
 const UnorderedList = require('./UnorderedList');
 
+var car = "hello";
+
 class App extends Component {
   
   constructor(props) {
@@ -29,6 +31,8 @@ class App extends Component {
   
   render(){
     
+    //console.log("gee");
+    
     var { isLoaded, items } = this.state;
     
     if(!isLoaded) {
@@ -49,7 +53,8 @@ class App extends Component {
   }
 }
 
-export default App;
+module.exports = App;
+//export default App;
 
 
 /*
