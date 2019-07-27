@@ -32,6 +32,7 @@ class App extends Component {
   render(){
     
     //console.log("gee");
+    App.componentDIdMount();
     
     var { isLoaded, items } = this.state;
     
