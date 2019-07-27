@@ -43,16 +43,17 @@ class App extends Component {
     }
     
     else{
-      return(
-        <div className="App">Data jas been loaded...</div>
-      )
-    }
-    
-    return (
+      return (
         <div className="App">
-      
-      </div>
-    );
+            <ul>
+              {items.map(item => (
+              
+              ))};
+            </ul>
+        </div>
+      );
+    
+    }
   }
 }
 
