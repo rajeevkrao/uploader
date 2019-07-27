@@ -9,6 +9,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      error: null,
       items: [],
       isLoaded: false,
     }
@@ -16,13 +17,15 @@ class App extends Component {
   
   componentDidMount() {
     
-    fetch('https://carrybot.glitch.me/getlist')
-      .then(res => res.json())
-      .then(json => {
+    fetch('https://ramer.glitch.me/getlist')
+      .then((res) => res.json())
+      .then((res) => {
+      
+        const { a } = res;
       
         this.setState({
           isLoaded: true,
-          item: json,
+          item: a,
         })
       
     });
@@ -32,7 +35,6 @@ class App extends Component {
   render(){
     
     //console.log("gee");
-    App.componentDIdMount();
     
     var { isLoaded, items } = this.state;
     
