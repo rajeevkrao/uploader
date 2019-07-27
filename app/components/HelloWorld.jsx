@@ -34,7 +34,7 @@ class App extends Component {
   
   render(){
     
-    //console.log("gee");
+    console.log(items);
     
     var { isLoaded, items } = this.state;
     
@@ -43,22 +43,22 @@ class App extends Component {
     }
     
     else{
-      return (
+      return(
         <div className="App">
-            <ul>
-              {items.map(item => (
-              
-              ))};
-            </ul>
+          Data has been loaded...
         </div>
       );
-    
     }
+    
+    return (
+        <div className="App">
+      
+      </div>
+    );
   }
 }
 
 module.exports = App;
-//export default App;
 
 
 /*
