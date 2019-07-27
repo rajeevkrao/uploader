@@ -35,7 +35,10 @@ class App extends Component {
     
     
     var { isLoaded, items } = this.state;
-    console.log(items);
+    var data,edata;
+    items.forEach(function(element) {
+      edata=<li>{element}</li>
+    });
     if(!isLoaded) {
        return <div>Loading...</div>
     }
