@@ -18,14 +18,13 @@ class App extends Component {
   componentDidMount() {
     
     fetch('https://ramer.glitch.me/getlist')
-      .then((res) => res.json())
-      .then((res) => {
+      .then(res => res.json())
+      .then(json => {
       
-        const { a } = res;
       
         this.setState({
           isLoaded: true,
-          item: a,
+          items: json,
         })
       
     });
@@ -34,10 +33,9 @@ class App extends Component {
   
   render(){
     
-    console.log(items);
     
     var { isLoaded, items } = this.state;
-    
+    console.log(items);
     if(!isLoaded) {
        return <div>Loading...</div>
     }
