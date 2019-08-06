@@ -42,7 +42,7 @@ class App extends Component {
     else{
       return(
         <div className="App">
-          
+            {items}
         </div>
       );
     }
