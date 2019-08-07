@@ -23,9 +23,10 @@ app.get('/getlist', function (req, res){
   var files = fs.readdir(folder, (err, files) => {
     var n=1;
     var json1={};
-    var reso = JSON.stringify(files);
-    reso.forEach(function(item){
+    files.forEach(item => {
         json1[n]={};
+        json1[n].name=item;
+        n++;
         
     });
     

@@ -45,7 +45,7 @@ class App extends Component {
       <ul>
         {items.map(hit =>
           <li key={hit.objectID}>
-            <a href={hit.url}>{hit.title}</a>
+            <a href={hit.name}>{hit.}</a>
           </li>
         )}
       </ul>
