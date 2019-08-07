@@ -42,7 +42,13 @@ class App extends Component {
     else{
       return(
         <div className="App">
-            {items}
+      <ul>
+        {items.map(hit =>
+          <li key={hit.objectID}>
+            <a href={hit.url}>{hit.title}</a>
+          </li>
+        )}
+      </ul>
         </div>
       );
     }
