@@ -21,10 +21,15 @@ app.get('/getlist', function (req, res){
   const folder = path.join(__dirname, '/app/uploads/');
   
   var files = fs.readdir(folder, (err, files) => {
- 
+    var n=1;
+    var json1={};
+    var reso = JSON.stringify(files);
+    reso.forEach(function(item){
+        json1[n]={};
+        
+    });
     
-    
-    
+    console.log(json1);
     
     
     var result = JSON.stringify(files);
