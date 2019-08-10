@@ -2,8 +2,6 @@ const  React = require('react');
 const { Component } = require('react');
 const UnorderedList = require('./UnorderedList');
 
-var car = "hello";
-
 class App extends Component {
   
   constructor(props) {
