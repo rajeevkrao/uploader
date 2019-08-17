@@ -21,28 +21,16 @@ app.get('/getlist', function (req, res){
   const folder = path.join(__dirname, '/app/uploads/');
   
   var files = fs.readdir(folder, (err, files) => {
-   /*
-    var n=1;
-    var json1={};
-    files.forEach(item => {
-        json1[n]={};
-        json1[n].name=item;
-        n++;
-        
-    });
-    
-    console.log(json1);
-    */
-    
     var result = JSON.stringify(files);
     res.send(result);
-/*
-  files.forEach(file => {
-    console.log(file);
-  });*/
   });
 
 });
+
+app.get('/download/:', function (req, res){
+    res.sendFile(__dirname + '/app/upload.html');
+});
+
 
 app.get('/uploads', function (req, res){
     res.sendFile(__dirname + '/app/upload.html');
