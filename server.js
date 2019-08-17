@@ -30,8 +30,8 @@ app.get('/getlist', function (req, res){
 app.get('/download/:filename', function (req, res){
     var { filename } = req.params;
     const file = path.join(__dirname, '/app/uploads/' + filename);
-    res.download(file);
-    res.sendFile(__dirname + '/app/index.html');
+    res.download(file, filename);
+    //res.sendFile(__dirname + '/app/index.html');
 });
 
 
