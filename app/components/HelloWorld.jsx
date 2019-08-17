@@ -33,11 +33,16 @@ class App extends Component {
     
     
     var { isLoaded, items } = this.state;
+    var content;
+    if(!items[0])
+      content=0;
+    else
+      content=1;
     if(!isLoaded) {
        return <div>Loading...</div>
     }
     
-    else{
+    else if(content){
       return(
         <div className="App">
       <ul>
@@ -47,6 +52,10 @@ class App extends Component {
             </ul>
         </div>
       );
+
+    }
+    else{
+      return(<div>No Files</div>);
     }
   }
 }
