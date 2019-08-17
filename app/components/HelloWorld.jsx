@@ -41,12 +41,10 @@ class App extends Component {
       return(
         <div className="App">
       <ul>
-        {items.map(hit =>
-          <li key={hit.id}>
-            <a href={hit.name}>{hit.id}</a>
-          </li>
-        )}
-      </ul>
+                {items.map(function(item, index){
+                    return <li key={ index }>{item}</li>;
+                  })}
+            </ul>
         </div>
       );
     }
