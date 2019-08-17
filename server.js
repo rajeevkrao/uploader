@@ -27,8 +27,11 @@ app.get('/getlist', function (req, res){
 
 });
 
-app.get('/download/:', function (req, res){
-    res.sendFile(__dirname + '/app/upload.html');
+app.get('/download/:filename', function (req, res){
+    var { filename } = req.params;
+    const file = path.join(__dirname, '/app/uploads/' + filename);
+    res.download(file);
+    res.sendFile(__dirname + '/app/index.html');
 });
 
 
