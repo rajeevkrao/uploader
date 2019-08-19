@@ -47,7 +47,7 @@ class App extends Component {
         <div className="App">
       <ul>
                 {items.map(function(item, index){
-                    return <li key={ index }><a href={'/download/' + item}>{item}</a> \t <a href={'/delete/' + item}>delete</a></li>;
+                    return <li key={ index }><a href={'/download/' + item}>{item}</a> &bull; <button href={'/delete/' + item}>delete</button></li>;
                   })}
             </ul>
         </div>
