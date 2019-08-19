@@ -34,6 +34,24 @@ app.get('/download/:filename', function (req, res){
     //res.sendFile(__dirname + '/app/index.html');
 });
 
+app.get('/delete/:filename', function (req, res){
+    var { filename } = req.params;
+    const file = path.join(__dirname, '/app/uploads/' + filename);
+    
+    try {
+      fs.unlinkSync(file)
+      //file removed
+    } catch(err) {
+    console.error(err)
+    }
+    res.end();
+    res.redirect("https://ramer.glitch.me/refresh");
+    //res.sendFile(__dirname + '/app/index.html');
+});
+
+app.get('/refresh', function (req, res){
+    res.redirect("https://ramer.glitch.me");
+});
 
 app.get('/uploads', function (req, res){
     res.sendFile(__dirname + '/app/upload.html');
