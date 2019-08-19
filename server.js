@@ -44,7 +44,7 @@ app.get('/delete/:filename', function (req, res){
     } catch(err) {
     console.error(err)
     }
-    res.end();
+    //res.end();
     res.redirect("https://ramer.glitch.me/refresh");
     //res.sendFile(__dirname + '/app/index.html');
 });
@@ -74,8 +74,10 @@ app.post('/uploads', function (req, res){
     form.on('file', function (name, file){
         console.log('Uploaded ' + file.name);
     });
-
-    res.sendFile(__dirname + '/app/index.html');
+  
+  
+    res.redirect("https://ramer.glitch.me");
+    //res.sendFile(__dirname + '/app/index.html');
 });
   
   
