@@ -63,8 +63,16 @@ app.post('/uploads', function (req, res){
     var form = new formidable.IncomingForm();
   
     form.parse(req, function(error, fields, files) {
-    console.log("parsing done");
+      console.log("parsing done");
+      fs.rename(files.upload.path, "/app/upload/test.png", function(error) {
+      if (error) {
+        fs.unlink("/tmp/test.png");
+        fs.rename(files.upload.path, "/tmp/test.png");
+      }
     });
+    });
+    /*  
+  
 
     form.on('fileBegin', function (name, file){
         file.path = __dirname + '/app/uploads/' + file.name;
@@ -73,7 +81,7 @@ app.post('/uploads', function (req, res){
     form.on('file', function (name, file){
         console.log('Uploaded ' + file.name);
     });
-  
+    */
     res.redirect("https://ramer.glitch.me");
 });
   
