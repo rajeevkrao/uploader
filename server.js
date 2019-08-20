@@ -64,10 +64,10 @@ app.post('/uploads', function (req, res){
   
     form.parse(req, function(error, fields, files) {
       console.log("parsing done");
-      fs.rename(files.upload.path, "/app/uploads/test.png", function(error) {
+      fs.rename(files.upload.path, "/app/app/uploads/test.png", function(error) {
       if (error) {
-        fs.unlink("/tmp/test.png");
-        fs.rename(files.upload.path, "/app/uploads/test.png");
+        fs.unlink("app/app/uploads/test.png");
+        fs.rename(files.upload.path, "app/app/uploads/test.png");
       }
       });
       res.end();
