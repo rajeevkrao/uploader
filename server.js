@@ -7,6 +7,7 @@ var formidable = require('formidable');
 var fs = require('fs');
 var path = require('path');
 var json = require('json');
+var mime = require('mime');
 
 
 // http://expressjs.com/en/starter/static-files.html
@@ -19,19 +20,20 @@ app.get("/", function(request, response) {
 
 app.get('/getlist', function (req, res){
   const folder = path.join(__dirname, '/app/uploads/');
-  
   var files = fs.readdir(folder, (err, files) => {
     var result = JSON.stringify(files);
     res.send(result);
   });
-
 });
 
 app.get('/download/:filename', function (req, res){
-    var { filename } = req.params;
-    const file = path.join(__dirname, '/app/uploads/' + filename);
-    res.download(file, filename);
-    //res.sendFile(__dirname + '/app/index.html');
+  var { filename } = req.params;
+  const file = path.join(__dirname, '/app/uploads/' + filename);
+  var mimetype = mime.lookup(file);
+  res.setHeader('Content-disposition', 'attachment; filename=' + filename);
+  res.setHeader('Content-type', mimetype);
+  
+  res.download(file, filename);
 });
 
 app.get('/delete/:filename', function (req, res){

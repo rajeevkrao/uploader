@@ -4,6 +4,7 @@ dependencies:
   formidable: 1.2.1
   json: 9.0.6
   jsx-loader: 0.13.2
+  mime: 2.4.4
   morgan: 1.9.1
   react: 16.9.0
   react-dom: 16.9.0
@@ -11485,6 +11486,7 @@ specifiers:
   formidable: ^1.2.1
   json: ^9.0.6
   jsx-loader: ^0.13.2
+  mime: ^2.4.3
   morgan: ^1.9.1
   react: ^16.9.0
   react-dom: ^16.9.0
