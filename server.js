@@ -7,7 +7,7 @@ var formidable = require('formidable');
 var fs = require('fs');
 var path = require('path');
 var json = require('json');
-var mime = require('mime');
+var mime = require('mime-types');
 
 
 // http://expressjs.com/en/starter/static-files.html
