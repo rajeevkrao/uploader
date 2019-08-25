@@ -60,18 +60,35 @@ app.get('/uploads', function (req, res){
 });
 
 app.post('/uploads', function (req, res){
+  
+  var form = new formidable.IncomingForm();
+  console.log("about to parse");
+  form.parse(req, function(error, fields, files) {
+    console.log("parsing done");
+    
+    /* Possible error on Windows systems:
+       tried to rename to an already existing file */
+    fs.rename(files.upload.path, "/tmp/test.png", function(error) {
+      if (error) {
+        fs.unlink("/tmp/test.png");
+        fs.rename(files.upload.path, "/tmp/test.png");
+      }
+    });
+  });
+  /*
     var form = new formidable.IncomingForm();
   
     form.parse(req, function(error, fields, files) {
       console.log("parsing done");
-      fs.rename(files.upload.path, "/app/app/uploads/test.png", function(error) {
+      fs.rename(files.upload.path, "/tmp/test.png", function(error) {
       if (error) {
-        fs.unlink("app/app/uploads/test.png");
-        fs.rename(files.upload.path, "app/app/uploads/test.png");
+        fs.unlink("/tmp/test.png");
+        fs.rename(files.upload.path, "/tmp/test.png");
       }
-      });
-      res.end();
     });
+
+    });
+    */
     /*  
   
 
