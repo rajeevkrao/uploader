@@ -74,69 +74,6 @@ app.get('/uploads', function (req, res){
 });
 
 app.post('/uploads',upload.single('myFile'), function (req, res, next){
-  /*
-  var form = new formidable.IncomingForm();
-  console.log("about to parse");
-  form.parse(req, function(error, fields, files) {
-    console.log("parsing done");
-    
-    fs.rename(files.upload.path, "/tmp/test.png", function(error) {
-      if (error) {
-        fs.unlink("/tmp/test.png");
-        fs.rename(files.upload.path, "/tmp/test.png");
-      }
-    });
-  });
-*/
-  /*
-    var form = new formidable.IncomingForm();
-  
-    form.multiples = true;
-  
-    form.uploadDir = path.join(__dirname, './app/uploads/');
-    /*
-    form.parse(req, function(error, fields, files) {
-      console.log("parsing done");
-      fs.rename(files.upload.path, "/tmp/test.png", function(error) {
-      if (error) {
-        fs.unlink("/tmp/test.png");
-        fs.rename(files.upload.path, "/tmp/test.png");
-      }
-    });
-
-    });
-    */
-  /*
-    form.on('file', function(field, file) {
-    fs.rename(file.path, path.join(form.uploadDir, file.name));
-
-  });
-
-  // log any errors that occur
-  form.on('error', function(err) {
-    console.log('An error has occured: \n' + err);
-  });
-
-  // once all the files have been uploaded, send a response to the client
-  form.on('end', function() {
-    res.end('Upload End');
-
-  });
-  form.parse(req);
-*/
-    /*  
-  
-
-    form.on('fileBegin', function (name, file){
-        file.path = __dirname + '/app/uploads/' + file.name;
-    });
-
-    form.on('file', function (name, file){
-        console.log('Uploaded ' + file.name);
-    });
-    */
-  
-  
     const file = req.file
     res.redirect("https://ramer.glitch.me");
 });
