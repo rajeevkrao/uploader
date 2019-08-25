@@ -6,9 +6,23 @@ var app = express();
 var formidable = require('formidable');
 var fs = require('fs');
 var path = require('path');
+var bodyParser = require('body-parser');
 var json = require('json');
 var mime = require('mime-types');
+const multer = require('multer');
+app.use(bodyParser.urlencoded({extended: true}))
 
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now())
+  }
+})
+
+
+var upload = multer({ storage: storage })
 
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
@@ -59,7 +73,7 @@ app.get('/uploads', function (req, res){
     res.sendFile(__dirname + '/app/upload.html');
 });
 
-app.post('/uploads', function (req, res){
+app.post('/uploads',upload.single('myFile'), function (req, res, next){
   /*
   var form = new formidable.IncomingForm();
   console.log("about to parse");
@@ -74,7 +88,7 @@ app.post('/uploads', function (req, res){
     });
   });
 */
-  
+  /*
     var form = new formidable.IncomingForm();
   
     form.multiples = true;
@@ -92,7 +106,7 @@ app.post('/uploads', function (req, res){
 
     });
     */
-  
+  /*
     form.on('file', function(field, file) {
     fs.rename(file.path, path.join(form.uploadDir, file.name));
 
@@ -109,7 +123,7 @@ app.post('/uploads', function (req, res){
 
   });
   form.parse(req);
-
+*/
     /*  
   
 
@@ -121,6 +135,9 @@ app.post('/uploads', function (req, res){
         console.log('Uploaded ' + file.name);
     });
     */
+  
+  
+  
     res.redirect("https://ramer.glitch.me");
 });
   
