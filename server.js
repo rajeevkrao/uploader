@@ -65,6 +65,15 @@ app.get('/delete/:filename', function (req, res){
     //res.sendFile(__dirname + '/app/index.html');
 });
 
+app.get('/show/:filename', function (req, res){
+    var { filename } = req.params;
+    const file = path.join(__dirname, '/app/uploads/' + filename);
+    var mimetype = mime.lookup(file);
+    res.set('Content-Type', file)
+    res.send(Buffer.from(file));
+});
+
+
 app.get('/refresh', function (req, res){
     res.redirect("https://ramer.glitch.me");
 });
