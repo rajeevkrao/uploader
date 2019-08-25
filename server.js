@@ -14,10 +14,10 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'uploads')
+    cb(null, 'app/uploads')
   },
   filename: function (req, file, cb) {
-    cb(null, file.fieldname + '-' + Date.now())
+    cb( null, file.originalname );
   }
 })
 
@@ -137,7 +137,7 @@ app.post('/uploads',upload.single('myFile'), function (req, res, next){
     */
   
   
-  
+    const file = req.file
     res.redirect("https://ramer.glitch.me");
 });
   
