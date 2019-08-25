@@ -77,8 +77,10 @@ app.post('/uploads', function (req, res){
   
     var form = new formidable.IncomingForm();
   
-  form.multiples = true;
+    form.multiples = true;
   
+    form.uploadDir = path.join(__dirname, './app/uploads/');
+    /*
     form.parse(req, function(error, fields, files) {
       console.log("parsing done");
       fs.rename(files.upload.path, "/tmp/test.png", function(error) {
@@ -89,7 +91,25 @@ app.post('/uploads', function (req, res){
     });
 
     });
-    
+    */
+  
+    form.on('file', function(field, file) {
+    fs.rename(file.path, path.join(form.uploadDir, file.name));
+
+  });
+
+  // log any errors that occur
+  form.on('error', function(err) {
+    console.log('An error has occured: \n' + err);
+  });
+
+  // once all the files have been uploaded, send a response to the client
+  form.on('end', function() {
+    res.end('Upload End');
+
+  });
+  form.parse(req);
+
     /*  
   
 
