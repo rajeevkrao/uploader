@@ -1,7 +1,7 @@
-Welcome to Glitch
+Welcome to Ramer
 =================
 
-Click `Show` in the header to see your app live. Updates to your code will instantly deploy and update live.
+This website helps in uploading any file from any computer and download it to any computer from any other place
 
 **Glitch** is the friendly community where you'll build the app of your dreams. Glitch lets you instantly create, remix, edit, and host an app, bot or site, and you can invite collaborators or helpers to simultaneously edit code with you.
 

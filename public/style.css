@@ -1,18 +1,55 @@
 /* styles */
 /* called by your view template */
+td.text{
+  color:#fff;
+}
+.modal-content
+{
+    background-color: #222222;
+}
+
+p.pfix{
+  padding-bottom:0.6vh;
+}
+
+.close{
+  color:#fff;
+}
+
+.close:hover{
+  color:#fff;
+}
 
 * {
   box-sizing: border-box;
 }
 
+#dpro{
+  display:none;
+}
+
+.blank {
+  margin-top: 2vh;
+}
+
+button.upl{
+  margin-bottom:2vh;
+}
+
 body {
   font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
   margin: 2em;
+  background-color: #121212;
+  color: #fff !important;
 }
 
 h1 {
-  font-style: italic;
-  color: #373fff;
+  font-style: bold;
+  color: #4178fa;
+}
+
+.upload_div {
+  text-align: right;
 }
 
 .bold {
@@ -20,61 +57,107 @@ h1 {
 }
 
 p {
+  color: white;
   max-width: 600px;
 }
 
-a.button {
-    -webkit-appearance: button;
-    -moz-appearance: button;
-    appearance: button;
+a {
+  color: white;
+}
 
-    text-decoration: none;
-    color: initial;
+a:hover {
+  color: #4178fa;
+}
+
+a.button {
+  background: #0c4ac4;
+  margin: 0vh 0.5vh;
+  padding: 0.2vh 1vh;
+  color: #fff;
+  font-family: "Helvetica", "Arial", sans-sefir;
+  text-decoration: none;
+  border-radius: 1vh;
+}
+
+a.button:hover {
+  background: #0f5df7;
+  margin: 0vh 0.5vh;
+  padding: 0.2vh 1vh;
+  color: #fff;
+  font-family: "Helvetica", "Arial", sans-sefir;
+  text-decoration: none;
+  border-radius: 1vh;
+}
+
+button.button {
+  background: #0c4ac4;
+  margin: 0vh 0.5vh;
+  padding: 0.2vh 1vh;
+  color: #fff;
+  font-family: "Helvetica", "Arial", sans-sefir;
+  text-decoration: none;
+  border-radius: 1vh;
+}
+
+button.button:hover {
+  background: #0f5df7;
+  margin: 0vh 0.5vh;
+  padding: 0.2vh 1vh;
+  color: #fff;
+  font-family: "Helvetica", "Arial", sans-sefir;
+  text-decoration: none;
+  border-radius: 1vh;
 }
 
 form {
   margin-bottom: 25px;
   padding: 15px;
-  background-color: blue;
+  background-color: black;
   display: inline-block;
   width: 100%;
   max-width: 340px;
-  border-radius: 3px;
+  border-radius: 1vh;
+}
+
+.pass {
+  color: white;
+  padding-bottom: 1.5vh;
 }
 
 input {
-  display: block;
-  margin-bottom: 10px;
-  padding: 5px;
-  width: 100%;
-  border: 1px solid lightgrey;
-  border-radius: 3px;
-  font-size: 16px;
+  display: block !important;
+  margin-bottom: 10px !important;
+  padding: 5px !important;
+  width: 100% !important;
+  border: 1px solid lightgrey !important;
+  border-radius: 3px !important;
+  font-size: 16px !important;
 }
 
-button {
-  font-size: 16px;
-  border-radius: 3px;
-  background-color: lightgrey;
-  border: 1px solid grey;
-  box-shadow: 2px 2px teal;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: yellow;
-}
-
-button:active {
-  box-shadow: none;
+.error {
+  color: red;
 }
 
 li {
-  margin-bottom: 5px;
+  margin-bottom: 2vh;
 }
 
 footer {
   margin-top: 50px;
   padding-top: 25px;
   border-top: 1px solid lightgrey;
+  color: white;
+}
+
+ul {
+  list-style: none; /* Remove default bullets */
+}
+
+ul li::before {
+  content: "\2022"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: white; /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 1em; /* Also needed for space (tweak if needed) */
+  margin-left: -1em; /* Also needed for space (tweak if needed) */
 }
