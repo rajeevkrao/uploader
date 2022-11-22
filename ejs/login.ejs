@@ -1,0 +1,20 @@
+<html>
+	<head>
+		<title>Login</title>
+	</head>
+	<body>
+		<div>
+			<h1>Login to Access the files</h1>
+			{/* Search Input */}
+			<form method="post" action='/api/login'>
+				<div className="pass">Enter Password:<br/></div>
+				<input name="password" required type="password" onChange="" onKeyPress="" />
+				<button id="subbut" type="submit">Login</button>
+			</form>
+			
+			<br/>
+			<p className="error">{this.state.message}<br/>{this.state.mat}</p>
+    </div>
+	</body>
+</html>
+			

@@ -1,0 +1,268 @@
+doctype html
+html(lang='en')
+	head
+		title Fake Outputter
+		meta(name='description', content='Fake Outputter made for Computer Science Students to save up their a**es')
+		link#favicon(rel='icon', href='https://glitch.com/edit/favicon-app.ico', type='image/x-icon')
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		link(href='https://fonts.googleapis.com/css?family=Courier+Prime:700&display=swap', rel='stylesheet')
+		link(href='https://fonts.googleapis.com/css?family=Cousine&display=swap', rel='stylesheet')
+		// import the webpage's stylesheet
+		//link(rel='stylesheet', href='/style.css')
+		style.
+			textarea{
+				border: none;
+				background-color: black;
+				color:#ededed;
+				font-family: 'Courier Prime', sans-serif;
+				width: 100%;
+				height: 100%;
+				resize:none;
+				font-size:1em;
+				line-height: 150%;
+			}
+			
+			p.name{
+				float:left;
+				width: 40%;
+				font-size:1.5em;
+				font-family: 'Cousine', monospace;
+			}
+			
+			textarea:focus{
+				outline:none;
+			}
+			
+			body{
+				background-color: black;
+				height:91%;
+				color:white;
+			}
+			
+			html{
+				height: 91%;
+			}
+			
+			div#controller{
+				padding:0vh 0vw;
+			}
+			
+			div#controller1{
+				padding:0.5vh 0vw;
+			}
+			
+			div.options{
+				float:right;
+				margin:3vh 2vw;
+				background-color:black;
+				padding:0vh 1vw;
+				border-radius:1vh;
+				border-color:white;
+				color:white;
+			}
+			
+			button.buttons{
+				float:right;
+				margin:2.5vh 2vw;
+				background-color:black;
+				padding:0.5vh 1vw;
+				border-radius:1vh;
+				border-color:white;
+				color:white;
+			}
+			
+			p#heading{
+				margin:3vh 0vw;
+				font-size: 1.3em;
+				color:white;
+				clear:both;
+			}
+	body
+		#controller
+			p.name
+				| FAKE OUTPUTTER
+			#controller1
+				button.buttons(onclick='deletedoc()')  Delete
+				|  
+				button.buttons(onclick='newdoc()') New
+				.options
+					select#select(onchange='changecurrdoc(this.value)')
+		p#heading(onclick='this.select()', contenteditable='true', onblur='savehead')
+		textarea#text(autofocus='', spellcheck='false', placeholder='Type Something...', oninput='savels(event)')
+		script.
+			var key;
+			if(!("prevdoc" in localStorage))
+			{
+			key = "d0";
+			var count=0;
+			var firstdoc;
+			for(var i=0;i<localStorage.length;i++)
+			{
+			if(localStorage.key(i)=="prevdoc")
+			continue;
+			if(!firstdoc)
+			firstdoc=localStorage.key(i);
+			count++;
+			}
+			if(!count)
+			{
+			localStorage.setItem("d0",JSON.stringify({"head":makeid(5),body:""}))
+			var data = "d0";
+			key="d0";
+			}
+			else{
+			var data = "d0";
+			key=firstdoc;
+			}
+			localStorage.setItem("prevdoc",data);
+			}
+			else
+			key = localStorage.getItem("prevdoc")
+			//alert(getnewidis());
+			sessionStorage.setItem("opnddoc",key);
+			var dat = JSON.parse(localStorage.getItem(sessionStorage.getItem("opnddoc")));
+			document.getElementById("heading").innerHTML = dat.head;
+			document.getElementById("text").value =  dat.body;
+			var sel = document.getElementById('select');
+			for(i=0;i<localStorage.length;i++){
+			if(localStorage.key(i)=="prevdoc")
+			continue;
+			var opt = document.createElement('option');
+			var doc = JSON.parse(localStorage.getItem(localStorage.key(i)));
+			opt.value = localStorage.key(i);
+			opt.id=localStorage.key(i);
+			opt.appendChild( document.createTextNode(doc.head) );
+			opt.onclick = function(){
+			changecurrdoc(localStorage.key(i));
+			}
+			sel.appendChild(opt);
+			}
+			document.getElementById(key).selected=true;
+			document.getElementById("heading").onclick=this.select()
+			document.getElementById("heading").addEventListener("input", savehead, false);
+			function changecurrdoc(idis){
+			sessionStorage.setItem("opnddoc",idis)
+			localStorage.setItem("prevdoc",idis);
+			var doc = JSON.parse(localStorage.getItem(idis));
+			document.getElementById("heading").innerHTML = doc.head;
+			document.getElementById("text").value =  doc.body;
+			}
+			function select(){
+			}
+			var div = document.getElementById("heading");
+			div.onfocus = function() {
+			window.setTimeout(function() {
+			var sel, range;
+			if (window.getSelection && document.createRange) {
+			range = document.createRange();
+			range.selectNodeContents(div);
+			sel = window.getSelection();
+			sel.removeAllRanges();
+			sel.addRange(range);
+			} else if (document.body.createTextRange) {
+			range = document.body.createTextRange();
+			range.moveToElementText(div);
+			range.select();
+			}
+			}, 1);
+			};
+			function savehead(){
+			var head = document.getElementById("heading").innerHTML;
+			var temp = JSON.parse(localStorage.getItem(sessionStorage.getItem("opnddoc")));
+			temp.head = head;
+			localStorage.setItem(sessionStorage.getItem("opnddoc"),JSON.stringify(temp));
+			document.getElementById(sessionStorage.getItem("opnddoc")).innerHTML=head;
+			}
+			function savels(event){
+			var head = document.getElementById("heading").innerHTML;
+			var body = event.target.value;
+			var dat = {"head":head,"body":body}
+			var obj = JSON.stringify(dat);
+			localStorage.setItem(sessionStorage.getItem("opnddoc"),obj);
+			}
+			function getid(idis){
+			return parseInt(idis.slice(1));
+			}
+			function getidis(id){
+			return 'd'+id
+			}
+			function makeid(length) {
+			var result           = '';
+			var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+			var charactersLength = characters.length;
+			for ( var i = 0; i < length; i++ ) {
+			result += characters.charAt(Math.floor(Math.random() * charactersLength));
+			}
+			return result;
+			}
+			function getnewidis(){
+			var firstdoc;
+			var lastdoc;
+			for(var i=0;i<localStorage.length;i++){
+			if(localStorage.key(i)=="prevdoc")
+			continue;
+			if(!firstdoc)
+			firstdoc=localStorage.key(i);
+			if(!lastdoc)
+			lastdoc=localStorage.key(i);
+			if(getid(firstdoc)>getid(localStorage.key(i)))
+			firstdoc=localStorage.key(i);
+			if(getid(lastdoc)<getid(localStorage.key(i)))
+			lastdoc=localStorage.key(i);
+			}
+			if((firstdoc==undefined)&&(lastdoc==undefined))
+			return "d0";
+			for(var i=0;i<getid(lastdoc);i++)
+			if(!(getidis(i) in localStorage))
+			return getidis(i);
+			var id = getid(lastdoc);
+			return getidis(++id);
+			}
+			function newdoc(){
+			var name = makeid(7);
+			//var doc= localStorage.getItem("prevdoc");
+			var doc = {"head":name,"body":""}
+			var id = getnewidis();
+			localStorage.setItem(id,JSON.stringify(doc));
+			changecurrdoc(id);
+			var sel = document.getElementById('select');
+			var opt = document.createElement('option');
+			opt.value = id;
+			opt.id=id;
+			opt.appendChild(document.createTextNode(name));
+			opt.onclick = function(){
+			changecurrdoc(id);
+			}
+			sel.appendChild(opt);
+			document.getElementById(id).selected=true;
+			}
+			function deletedoc(){
+			localStorage.removeItem(sessionStorage.getItem("opnddoc"));
+			var x = document.getElementById('select');
+			x.remove(x.selectedIndex);
+			var id;
+			var count=0;
+			for(i=0;i<localStorage.length;i++){
+			if(localStorage.key(i)=="prevdoc")
+			continue;
+			count++;
+			id=localStorage.key(i);
+			break;
+			}
+			if(!count){
+			newdoc();
+			}
+			else{
+			changecurrdoc(id);
+			document.getElementById(id).selected=true;
+			}
+			}
+			function printDiv(){
+			var printContents = document.getElementById("text").innerHTML;
+			var originalContents = document.body.innerHTML;
+			document.body.innerHTML = printContents;
+			window.print();
+			document.body.innerHTML = originalContents;
+			}

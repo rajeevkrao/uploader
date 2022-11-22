@@ -20,7 +20,7 @@ class App extends Component {
     if (query === '') {
       return;
     }
-    fetch('https://ramer.glitch.me/checkpass?pass=' + query)
+    fetch('checkpass?pass=' + query)
       .then(response => response.json())
       .then(result => this.onSetResult(result, query));
   };

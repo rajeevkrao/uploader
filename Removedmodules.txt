@@ -1,0 +1,7 @@
+rimraf
+morgan
+left-pad
+discord.js
+less-middleware
+cookie-parser
+cookie-session

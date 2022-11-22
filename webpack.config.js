@@ -3,11 +3,13 @@ const webpack = require('webpack');
 
 module.exports = {
   mode: 'production',
-  context: path.join(__dirname, './'),
-  entry: './app/app.jsx',
+  //context: path.join(__dirname, '/app'),
+  entry: {"app":path.join(__dirname, '/app','/app.jsx'),
+					"test":'/test.jsx'
+					},
   output: {
     path: path.join(__dirname, 'public'),
-    filename: 'bundle.js',
+    filename: '[name].js',
   },
   resolve: {
     extensions: ['.js', '.jsx']

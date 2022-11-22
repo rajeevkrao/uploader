@@ -1,0 +1,139 @@
+<html>
+	<head><title>Text\Link Share</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<style>
+			body{
+				background-color:#121212;
+				font-size:2em;
+			}
+			.list-group-item{
+				margin:0.5vh 0.5vw;
+				border: 1px solid #ddd;
+			}
+			ul>li>span>button{
+				margin:0 0.5vw;
+			}
+
+			/* The snackbar - position it at the bottom and in the middle of the screen */
+			#snackbar {
+			  visibility: hidden; /* Hidden by default. Visible on click */
+			  min-width: 250px; /* Set a default minimum width */
+			  margin-left: -125px; /* Divide value of min-width by 2 */
+			  background-color: #333; /* Black background color */
+			  color: #fff; /* White text color */
+			  text-align: center; /* Centered text */
+			  border-radius: 2vh; /* Rounded borders */
+			  padding: 16px; /* Padding */
+			  position: fixed; /* Sit on top of the screen */
+			  z-index: 1; /* Add a z-index if needed */
+			  left: 50%; /* Center the snackbar */
+			  bottom: 10vh; /* 10vh from the bottom */
+			}
+			
+			/* Show the snackbar when clicking on a button (class added with JavaScript) */
+			#snackbar.show {
+			  visibility: visible; /* Show the snackbar */
+			  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+			  However, delay the fade out process for 2.5 seconds */
+			  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+			  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+			}
+			
+			/* Animations to fade the snackbar in and out */
+			@-webkit-keyframes fadein {
+			  from {bottom: 0; opacity: 0;}
+			  to {bottom: 10vh; opacity: 1;}
+			}
+			
+			@keyframes fadein {
+			  from {bottom: 0; opacity: 0;}
+			  to {bottom: 10vh; opacity: 1;}
+			}
+			
+			@-webkit-keyframes fadeout {
+			  from {bottom: 10vh; opacity: 1;}
+			  to {bottom: 0; opacity: 0;}
+			}
+			
+			@keyframes fadeout {
+			  from {bottom: 10vh; opacity: 1;}
+			  to {bottom: 0; opacity: 0;}
+			}
+		</style>
+	</head>
+	<body>
+		
+		<ul class="list-group">
+			<%texts.forEach((i,index)=>{%>
+				<li id="<%=index%>" class="list-group-item"><span><%=i%></span><span style="position:absolute; right:0.5vw;"><button style="" class="copy"><i class="fa-regular fa-copy"></i></button><button class="delete" data-toggle="modal" data-target="#exampleModal" style=""><i class="fa-solid fa-trash"></i></button></span></li>
+			<% }) %>
+		</ul>
+
+		<div id="snackbar">Text Copied</div>
+
+		<div class="modal" id="exampleModal" tabindex="-1" role="dialog">
+  		<div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title"><b>Confirm Delete?</b></h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        <p></p>
+		      </div>
+		      <div class="modal-footer">
+		        <button id="delete" type="button" class="btn btn-danger">Delete</button>
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
+		<div  style="bottom:0px; height:5vh; position:fixed; width:100%">
+			<input id="addInput" type="text" placeholder="Add Text/Link Here" style="height:inherit; width:79%"/>
+			<button id="add" style="position:absolute; right:0; width:20%; height:inherit;">Add</button>
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js" integrity="sha512-0qU9M9jfqPw6FKkPafM3gy2CBAvUWnYVOfNPDYKVuRTel1PrciTj+a9P3loJB+j0QmN2Y0JYQmkBBS8W+mbezg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script>
+			var deleteID = -1;
+			var text = "";
+			document.getElementById('add').onclick = function(){
+				console.log(document.getElementById('addInput'))
+				axios.post('/texts/add',{text:document.getElementById('addInput').value}).then(()=>{
+					location.reload();
+				})
+			}
+			$(".copy").click((event)=>{
+				// Get the snackbar DIV
+  var x = document.getElementById("snackbar");
+
+  // Add the "show" class to DIV
+  x.className = "show";
+
+  // After 3 seconds, remove the show class from DIV
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+				
+				navigator.clipboard.writeText(event.target.parentNode.parentNode.parentNode.firstChild.innerText);
+				console.log(event.target.parentNode.parentNode.parentNode.firstChild.innerText)
+			})
+
+			$('.delete').click((event)=>{
+				deleteID = event.target.parentNode.parentNode.parentNode.id
+				$('.modal-body>p').text(event.target.parentNode.parentNode.parentNode.firstChild.innerText)
+			})
+
+			$('#delete').click(()=>{
+				axios.get('/texts/delete?index='+deleteID).then(()=>{
+					location.reload();
+				})
+			})
+	
+		</script>
+	</body>
+</html>

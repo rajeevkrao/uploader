@@ -26,7 +26,7 @@ class App extends Component {
   
   checklog(){
     if(sessionStorage.getItem('SID') !== "fdas73jljk324kjslkj354sjk")
-      this.props.history.push('/login'); //function must be bound to this to make this code work 
+      this.props.history.push('/login'); //parent function must be bound to this to make this code work 
   }
   openModal = key => {
     this.setState({
@@ -56,7 +56,7 @@ class App extends Component {
   componentDidMount() {
     
     
-    fetch('https://ramer.glitch.me/getlist')
+    fetch('/getlist')
       .then(res => res.json())
       .then(json => {
       
@@ -80,7 +80,7 @@ class App extends Component {
         			</ModalHeader>
         			<ModalBody>
                 <p class="pfix">Enter new filename</p>
-          				<input required type="text" onChange={this.onChange} /> 
+          				<input required type="text" onChange={this.onChange} value={oldfilename}/> 
         			</ModalBody>
               <ModalFooter>
                 <a class="button" href="javascript:void(0);" onClick={this.rename}>Rename</a>
@@ -132,6 +132,8 @@ class App extends Component {
             </Table>
           <br />
                 <div className="upload_div">  
+									<a className="button" align="right" href="/edit/">Add</a>
+									<a className="button" align="right" href="/downloadall/">Download All</a> 
                   <a className="button" align="right" href="/logout/">Logout</a> 
                   <a className="button" align="right" href="/uploads/">Upload</a>
                 </div>
@@ -143,6 +145,8 @@ class App extends Component {
                 No Files         
                 <br />
                 <div className="upload_div">  
+									<a className="button" align="right" href="/edit/">Add</a> 
+                  <a className="button" align="right" href="/logout/">Logout</a> 
                   <a className="button" align="right" href="/uploads/">Upload</a>
                 </div>
             </div>);
